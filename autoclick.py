@@ -14,17 +14,22 @@ def check(pname='Nox.exe'):
     else:
         return False
 
+'''
+use get() to get the point of nox
+'''
+def get():
+    win32gui.EnumWindows(callback, None)
+
 def callback(hwnd, extra):
     rect = win32gui.GetWindowRect(hwnd)
-    x = rect[0]
-    y = rect[1]
-    w = rect[2] - x
-    h = rect[3] - y
-    print("Window %s:" % win32gui.GetWindowText(hwnd))
-    print("\tLocation: (%d, %d)" % (x, y))
-    print("\t    Size: (%d, %d)" % (w, h))
-
-if __name__ == '__main__':
-    win32gui.EnumWindows(callback, None)
+    x1 = rect[0]
+    y1 = rect[1]
+    x2 = rect[2]
+    y2 = rect[3]
+    name=win32gui.GetWindowText(hwnd)
+    #print("%s:" %name)
+    if(name=='夜神模擬器1'):
+        print(x1,y1,x2,y2)
+        return(x1,y1,x2,y2)
 
         
