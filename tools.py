@@ -1,7 +1,8 @@
 import pyautogui
 import win32com.client
 import win32gui
-
+import numpy as np
+from PIL import ImageGrab
 '''
 use check('pname') to check the target process is execute or not
 '''
@@ -32,4 +33,17 @@ def callback(hwnd, extra):
         print(x1,y1,x2,y2)
         return(x1,y1,x2,y2)
 
-        
+'''
+use mclick(x,y) to click position (x,y) on screen 
+'''
+def mclick(x=0,y=0):
+    pyautogui.click(x,y)
+    
+'''
+cut the img in range(x1,y1,x2,y2)
+save in test.jpg
+'''
+def mprtsc(x1=0,y1=0,x2=100,y2=100):
+    img = ImageGrab.grab(bbox=(x1,y1,x2,y2))
+    img.save('test.jpg','JPEG')
+
