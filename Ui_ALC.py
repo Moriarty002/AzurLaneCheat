@@ -14,9 +14,18 @@ class Ui_AzurLaneCheater(object):
     def setupUi(self, AzurLaneCheater):
         AzurLaneCheater.setObjectName("AzurLaneCheater")
         AzurLaneCheater.resize(707, 392)
-        self.graphicsView = QtWidgets.QGraphicsView(AzurLaneCheater)
+        self.graphicsView = QtWidgets.QLabel(AzurLaneCheater)
         self.graphicsView.setGeometry(QtCore.QRect(215, 10, 481, 311))
         self.graphicsView.setObjectName("graphicsView")
+
+        self.img=QtGui.QPixmap('./img/test.png')
+        self.graphicsView.setPixmap(self.img)
+
+        #choose a stage
+        #get value ==> self.Stage.currentText()
+        self.label = QtWidgets.QLabel(AzurLaneCheater)
+        self.label.setGeometry(QtCore.QRect(20, 60, 181, 41))
+        self.label.setObjectName("label")
 
         self.Stage = QtWidgets.QComboBox(AzurLaneCheater)
         self.Stage.setGeometry(QtCore.QRect(20, 100, 161, 31))
@@ -26,16 +35,13 @@ class Ui_AzurLaneCheater(object):
         self.Stage.addItem("")
         self.Stage.addItem("")
         self.Stage.addItem("")
-
-        self.label = QtWidgets.QLabel(AzurLaneCheater)
-        self.label.setGeometry(QtCore.QRect(20, 60, 181, 41))
-        self.label.setObjectName("label")
         
         self.confirm = QtWidgets.QPushButton(AzurLaneCheater)
         self.confirm.setGeometry(QtCore.QRect(110, 140, 75, 23))
         self.confirm.setObjectName("confirm")
         self.confirm.clicked.connect(self.F_confirm)
-
+        #to show the 'nox.exe' is detected or not
+        #display in nox_detect
         self.label_2 = QtWidgets.QLabel(AzurLaneCheater)
         self.label_2.setGeometry(QtCore.QRect(20, 30, 41, 31))
         self.label_2.setObjectName("label_2")
@@ -43,11 +49,12 @@ class Ui_AzurLaneCheater(object):
         self.nox_detect = QtWidgets.QLabel(AzurLaneCheater)
         self.nox_detect.setGeometry(QtCore.QRect(70, 30, 61, 31))
         self.nox_detect.setObjectName("nox_detect")
-
+        #
         self.label_3 = QtWidgets.QLabel(AzurLaneCheater)
         self.label_3.setGeometry(QtCore.QRect(20, 170, 181, 41))
         self.label_3.setObjectName("label_3")
-
+        #show how many bullet team1 have
+        #show in team1 label
         self.label_4 = QtWidgets.QLabel(AzurLaneCheater)
         self.label_4.setGeometry(QtCore.QRect(30, 220, 71, 31))
         self.label_4.setObjectName("label_4")
@@ -55,7 +62,8 @@ class Ui_AzurLaneCheater(object):
         self.team1 = QtWidgets.QLabel(AzurLaneCheater)
         self.team1.setGeometry(QtCore.QRect(110, 220, 61, 31))
         self.team1.setObjectName("team1")
-
+        #show how many bullet team2 have
+        #show in team2 label
         self.label_5 = QtWidgets.QLabel(AzurLaneCheater)
         self.label_5.setGeometry(QtCore.QRect(30, 250, 71, 31))
         self.label_5.setObjectName("label_5")
@@ -63,12 +71,8 @@ class Ui_AzurLaneCheater(object):
         self.team2 = QtWidgets.QLabel(AzurLaneCheater)
         self.team2.setGeometry(QtCore.QRect(110, 250, 61, 31))
         self.team2.setObjectName("team2")
-
-        self.close = QtWidgets.QPushButton(AzurLaneCheater)
-        self.close.setGeometry(QtCore.QRect(620, 350, 75, 23))
-        self.close.setObjectName("close")
-        self.close.clicked.connect(QtWidgets.qApp.quit)
-        
+        #show how many enemy killed
+        #show in kill label 
         self.label_6 = QtWidgets.QLabel(AzurLaneCheater)
         self.label_6.setGeometry(QtCore.QRect(30, 280, 71, 31))
         self.label_6.setObjectName("label_6")
@@ -76,6 +80,16 @@ class Ui_AzurLaneCheater(object):
         self.kill = QtWidgets.QLabel(AzurLaneCheater)
         self.kill.setGeometry(QtCore.QRect(110, 280, 61, 31))
         self.kill.setObjectName("kill")
+        #show what state now
+        # (1)runing (2)full (3)other
+        self.state=QtWidgets.QLabel(AzurLaneCheater)
+        self.state.setGeometry(QtCore.QRect(30,310,61,31))
+        self.state.setObjectName("state")
+        #close button
+        self.close = QtWidgets.QPushButton(AzurLaneCheater)
+        self.close.setGeometry(QtCore.QRect(620, 350, 75, 23))
+        self.close.setObjectName("close")
+        self.close.clicked.connect(QtWidgets.qApp.quit)
 
         self.retranslateUi(AzurLaneCheater)
         QtCore.QMetaObject.connectSlotsByName(AzurLaneCheater)
@@ -100,7 +114,11 @@ class Ui_AzurLaneCheater(object):
         self.close.setText(_translate("AzurLaneCheater", "close"))
         self.label_6.setText(_translate("AzurLaneCheater", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">Kill :</span></p></body></html>"))
         self.kill.setText(_translate("AzurLaneCheater", "<html><head/><body><p><br/></p></body></html>"))
-    
+        self.state.setText(_translate("AzurLaneCheater", "<html><head/><body><p><br/></p></body></html>"))
+
     def F_confirm(self):
         print(self.Stage.currentText())
+        self.stagenum=self.Stage.currentText()
+
+
         
