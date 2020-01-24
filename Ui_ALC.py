@@ -90,7 +90,11 @@ class Ui_AzurLaneCheater(object):
         self.close.setGeometry(QtCore.QRect(620, 350, 75, 23))
         self.close.setObjectName("close")
         self.close.clicked.connect(QtWidgets.qApp.quit)
-
+        #other
+        self.killcnt=0
+        self.team1cnt=5
+        self.team2cnt=5
+        #
         self.retranslateUi(AzurLaneCheater)
         QtCore.QMetaObject.connectSlotsByName(AzurLaneCheater)
 
@@ -106,7 +110,7 @@ class Ui_AzurLaneCheater(object):
         self.confirm.setText(_translate("AzurLaneCheater", "confirm"))
         self.label_2.setText(_translate("AzurLaneCheater", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">nox :</span></p></body></html>"))
         self.nox_detect.setText(_translate("AzurLaneCheater", "<html><head/><body><p><br/></p></body></html>"))
-        self.label_3.setText(_translate("AzurLaneCheater", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">State :</span></p></body></html>"))
+        self.label_3.setText(_translate("AzurLaneCheater", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">Stage :</span></p></body></html>"))
         self.label_4.setText(_translate("AzurLaneCheater", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">Team1 :</span></p></body></html>"))
         self.team1.setText(_translate("AzurLaneCheater", "<html><head/><body><p><br/></p></body></html>"))
         self.label_5.setText(_translate("AzurLaneCheater", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">Team2 :</span></p></body></html>"))
@@ -117,8 +121,14 @@ class Ui_AzurLaneCheater(object):
         self.state.setText(_translate("AzurLaneCheater", "<html><head/><body><p><br/></p></body></html>"))
 
     def F_confirm(self):
-        print(self.Stage.currentText())
+        _translate = QtCore.QCoreApplication.translate
         self.stagenum=self.Stage.currentText()
-
-
-        
+        print(self.stagenum)
+        self.label_3.setText(_translate("AzurLaneCheater", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">Stage : "+ self.stagenum +"</span></p></body></html>"))
+        self.updateUi()
+    
+    def updateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.kill.setText(_translate("AzurLaneCheater","<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">"+str(self.killcnt)+"</span></p></body></html>"))
+        self.team1.setText(_translate("AzurLaneCheater","<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">"+str(self.team1cnt)+"</span></p></body></html>"))
+        self.team2.setText(_translate("AzurLaneCheater","<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">"+str(self.team2cnt)+"</span></p></body></html>"))
